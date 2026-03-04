@@ -1,7 +1,6 @@
 Great! I see your GitHub project link:
 🔗 GitHub Repository: smart-wanderlust-ai-trips
 
-Let’s now create a professional, recruiter-friendly README.md for your Smart Wanderlust – AI Trips project. This will help position it like a FAANG-style showcase project, highlighting your technical skills, modern tools, and real-world usability.
 
 
 🌍 Smart Wanderlust – AI-Powered Travel Planner
