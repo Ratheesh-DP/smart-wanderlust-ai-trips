@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Build Frontend
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install AI Service Dependencies
+        working-directory: ai-services
+        run: pip install -r requirements.txt
+
+      - name: Build Docker images
+        run: docker-compose -f infrastructure/docker-compose.yml build
+
+      - name: Test Docker compose
+        run: docker-compose -f infrastructure/docker-compose.yml config
